@@ -5,17 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>ajax web service</title>
-
-    <script>
-      $(document).ready(function() {
-        $("#btn").click(function() {
-          $("#test").load();
-        });
-      });
-    </script>
   </head>
   <body>
-    <div id="test">This is the first content</div>
-    <button id="btn">Click on change</button>
+    <div id="output"></div>
+    <button id="getText">Click here!</button>
+    <script>
+      document.getElementById("getText").addEventListener("click", getText);
+
+      function getText() {
+        /*fetch("sample.txt")
+          .then(function(res) {
+            return res.text();
+          })
+          .then(function(data) {
+            console.log(data);
+          });*/
+        fetch("sample.txt")
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("output").innerHTML = data;
+          });
+      }
+    </script>
   </body>
 </html>
